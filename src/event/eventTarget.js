@@ -42,3 +42,5 @@ EventTarget.prototype = {
 		
 	}
 }
+
+export default EventTarget

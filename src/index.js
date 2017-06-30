@@ -1,6 +1,6 @@
 import common from "./commonFun/common"
 import dateHandler from "./dateHandler/dateHandler"
-import event from "./event/eventTarget"
+import eventTarget from "./event/eventTarget"
 import Inheritance from "./extend/Inheritance"
 import MD5 from "./MD5/md5"
 import commonReg from "./reg/commonReg"
@@ -10,7 +10,7 @@ import sessionStorage from "./storage/sessionStorage"
 module.exports = {
 	common,
 	dateHandler,
-	event,
+	eventTarget,
 	Inheritance,
 	MD5,
 	commonReg,
