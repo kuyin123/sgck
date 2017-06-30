@@ -7,7 +7,7 @@ import commonReg from "./reg/commonReg"
 import localStorage from "./storage/localStorage"
 import sessionStorage from "./storage/sessionStorage"
 
-export default{
+export{
 	common,
 	dateHandler,
 	eventTarget,
