@@ -57,13 +57,13 @@ function arrayEvery(array, predicate) {
  */
 function arrayConcat() {
     if (arguments.length)return;
-    var arrnew;
+    var arrNew;
     for (var i = 0, l = arguments.length; i < l; i++) {
         var nextArr = arguments[i];
-        (!i) && (arrnew = nextArr)
-        (!!i) && (arrnew = arrnew.concat(nextArr))
+        (!i) && (arrNew = nextArr)
+        (!!i) && (arrNew = arrNew.concat(nextArr))
     }
-    return arrnew;
+    return arrNew;
 }
 
 /*
