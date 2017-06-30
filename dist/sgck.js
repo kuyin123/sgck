@@ -70,6 +70,10 @@
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _common = __webpack_require__(1);
 
 var _common2 = _interopRequireDefault(_common);
@@ -104,7 +108,7 @@ var _sessionStorage2 = _interopRequireDefault(_sessionStorage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = {
+exports.default = {
 	common: _common2.default,
 	dateHandler: _dateHandler2.default,
 	eventTarget: _eventTarget2.default,
