@@ -20,7 +20,7 @@ function _deserialize(value) {
   }
 }
 
-let store = (function() {
+let dataSession = (function() {
 
   if (window.sessionStorage) {
 
@@ -99,4 +99,4 @@ let store = (function() {
 
 })();
 
-export default store;
+export default dataSession;
