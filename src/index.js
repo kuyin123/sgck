@@ -5,7 +5,7 @@ import Inheritance from "./extend/Inheritance"
 import md5 from "./md5/md5"
 import commonReg from "./reg/commonReg"
 import dataLocal from "./storage/localStorage"
-import dataSession from "./storage/sessionStorage"
+import dataSession from "./storage/dataSession"
 
 export{
 	common,
