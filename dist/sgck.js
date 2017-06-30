@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["sgck"] = factory();
+	else
+		root["sgck"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -73,6 +83,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.dataSession = exports.dataLocal = exports.commonReg = exports.md5 = exports.Inheritance = exports.eventTarget = exports.dateHandler = exports.common = undefined;
 
 var _common = __webpack_require__(1);
 
@@ -102,22 +113,20 @@ var _localStorage = __webpack_require__(9);
 
 var _localStorage2 = _interopRequireDefault(_localStorage);
 
-var _sessionStorage = __webpack_require__(10);
+var _dataSession = __webpack_require__(10);
 
-var _sessionStorage2 = _interopRequireDefault(_sessionStorage);
+var _dataSession2 = _interopRequireDefault(_dataSession);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = {
-	common: _common2.default,
-	dateHandler: _dateHandler2.default,
-	eventTarget: _eventTarget2.default,
-	Inheritance: _Inheritance2.default,
-	MD5: _md2.default,
-	commonReg: _commonReg2.default,
-	localStorage: _localStorage2.default,
-	sessionStorage: _sessionStorage2.default
-};
+exports.common = _common2.default;
+exports.dateHandler = _dateHandler2.default;
+exports.eventTarget = _eventTarget2.default;
+exports.Inheritance = _Inheritance2.default;
+exports.md5 = _md2.default;
+exports.commonReg = _commonReg2.default;
+exports.dataLocal = _localStorage2.default;
+exports.dataSession = _dataSession2.default;
 
 /***/ }),
 /* 1 */
@@ -940,7 +949,7 @@ function _deserialize(value) {
   }
 }
 
-var store = function () {
+var dataSession = function () {
 
   if (window.sessionStorage) {
     var set = function set(key, val) {
@@ -1019,7 +1028,8 @@ var store = function () {
   }
 }();
 
-exports.default = store;
+exports.default = dataSession;
 
 /***/ })
 /******/ ]);
+});
