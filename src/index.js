@@ -17,3 +17,14 @@ export{
 	dataLocal,
 	dataSession
 }
+
+export default {
+	common,
+	dateHandler,
+	eventTarget,
+	Inheritance,
+	md5,
+	commonReg,
+	dataLocal,
+	dataSession
+}
