@@ -127,6 +127,16 @@ exports.md5 = _md2.default;
 exports.commonReg = _commonReg2.default;
 exports.dataLocal = _localStorage2.default;
 exports.dataSession = _dataSession2.default;
+exports.default = {
+	common: _common2.default,
+	dateHandler: _dateHandler2.default,
+	eventTarget: _eventTarget2.default,
+	Inheritance: _Inheritance2.default,
+	md5: _md2.default,
+	commonReg: _commonReg2.default,
+	dataLocal: _localStorage2.default,
+	dataSession: _dataSession2.default
+};
 
 /***/ }),
 /* 1 */
