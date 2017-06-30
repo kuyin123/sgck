@@ -1,7 +1,16 @@
+
 /*
  * JS数组工具类方法
  * by gouxiaojun
  */
+
+/*
+ * 判断数组是否为空
+ *
+ * */
+function isEmpty(arr) {
+    return arr.length === 0
+}
 
 /*
  * 数组的过滤方法且返回包含的数组
