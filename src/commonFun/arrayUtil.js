@@ -1,7 +1,16 @@
+
 /*
  * JS数组工具类方法
  * by gouxiaojun
  */
+
+/*
+ * 判断数组是否为空
+ *
+ * */
+function isEmpty(arr) {
+    return arr.length === 0
+}
 
 /*
  * 数组的过滤方法且返回包含的数组
@@ -48,13 +57,13 @@ function arrayEvery(array, predicate) {
  */
 function arrayConcat() {
     if (arguments.length)return;
-    var arrnew;
+    var arrNew;
     for (var i = 0, l = arguments.length; i < l; i++) {
         var nextArr = arguments[i];
-        (!i) && (arrnew = nextArr)
-        (!!i) && (arrnew = arrnew.concat(nextArr))
+        (!i) && (arrNew = nextArr)
+        (!!i) && (arrNew = arrNew.concat(nextArr))
     }
-    return arrnew;
+    return arrNew;
 }
 
 /*
