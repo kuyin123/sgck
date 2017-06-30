@@ -12,8 +12,8 @@ module.exports = {
     'sgck': __dirname + '/src/index.js'
   },
   output: {
-    /*libraryTarget: 'umd',*/
-    /*library: 'sgck',*/
+    libraryTarget: 'umd',
+    library: 'sgck',
     path: __dirname + '/dist',
     filename: PROD ? '[name].min.js' : '[name].js'
   },
