@@ -13,7 +13,7 @@ module.exports = {
   },
   output: {
     /*libraryTarget: 'umd',*/
-    /*library: 'sg',*/
+    /*library: 'sgck',*/
     path: __dirname + '/dist',
     filename: PROD ? '[name].min.js' : '[name].js'
   },
