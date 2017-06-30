@@ -9,7 +9,7 @@ module.exports = {
     })
   ],
   entry: {
-    'sgc': __dirname + '/src/index.js'
+    'sgck': __dirname + '/src/index.js'
   },
   output: {
     /*libraryTarget: 'umd',*/
