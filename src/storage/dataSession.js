@@ -84,13 +84,13 @@ let dataSession = (function() {
       return this;
     }
     return {
-      set,
-      get,
-      clear,
-      remove,
-      has,
-      keys,
-      size
+      set:set,
+      get:get,
+      clear:clear,
+      remove:remove,
+      has:has,
+      keys:keys,
+      size:size
     }
 
   } else {
