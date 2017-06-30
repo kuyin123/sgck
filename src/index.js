@@ -2,18 +2,18 @@ import common from "./commonFun/common"
 import dateHandler from "./dateHandler/dateHandler"
 import eventTarget from "./event/eventTarget"
 import Inheritance from "./extend/Inheritance"
-import MD5 from "./md5/md5"
+import md5 from "./md5/md5"
 import commonReg from "./reg/commonReg"
-import localStorage from "./storage/localStorage"
-import sessionStorage from "./storage/sessionStorage"
+import dataLocal from "./storage/localStorage"
+import dataSession from "./storage/sessionStorage"
 
 export{
 	common,
 	dateHandler,
 	eventTarget,
 	Inheritance,
-	MD5,
+	md5,
 	commonReg,
-	localStorage,
-	sessionStorage
+	dataLocal,
+	dataSession
 }
