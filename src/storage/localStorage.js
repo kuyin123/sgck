@@ -11,7 +11,7 @@ let storage = (function () {
         let ls = window.localStorage;
 
         //更新缓存数据
-        function write(name, val) {
+        function set(name, val) {
             let str = typeof name === 'string' || typeof name === "number";
             let obj = typeof val === 'object';
             if (!str)return;
@@ -20,7 +20,7 @@ let storage = (function () {
         };
 
         //获取缓存数据
-        function read(name) {
+        function get(name) {
             let item = ls.getItem(name);
             if (name && item) {
                 return (item.indexOf('{') != -1 || item.indexOf('[') != -1) ? JSON.parse(item) : item;
@@ -35,15 +35,15 @@ let storage = (function () {
         };
 
         //清除所有缓存数据
-        function clearAll() {
+        function clear() {
             ls.clear();
         };
 
         return {
-            write,
-            read,
+            set,
+            get,
             remove,
-            clearAll
+            clear
         }
 
     } else {
