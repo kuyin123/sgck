@@ -40,10 +40,10 @@ let storage = (function () {
         };
 
         return {
-            set,
-            get,
-            remove,
-            clear
+            set:set,
+            get:get,
+            remove:remove,
+            clear:clear
         }
 
     } else {
