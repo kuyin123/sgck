@@ -2,7 +2,7 @@
   "name": "sgck",
   "version": "0.0.1",
   "description": "javascript library",
-  "main": "dist/sgck.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
