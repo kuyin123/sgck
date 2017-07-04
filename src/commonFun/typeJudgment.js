@@ -65,14 +65,14 @@ function isDate(d) {
 }
 
 export default {
-	isArray,
-	isFunction,
-	isString,
-	isObject,
-	isNumber,
-	isBoolean,
-	isNull,
-	isNullOrUndefined,
-	isUndefined,
-	isDate
+	isArray:isArray,
+	isFunction:isFunction,
+	isString:isString,
+	isObject:isObject,
+	isNumber:isNumber,
+	isBoolean:isBoolean,
+	isNull:isNull,
+	isNullOrUndefined:isNullOrUndefined,
+	isUndefined:isUndefined,
+	isDate:isDate
 }

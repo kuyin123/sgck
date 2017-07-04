@@ -7,10 +7,10 @@ import typeJudgment from "./typeJudgment"
 
 
 export default {
-    StringUtil,
-    arrayUtil,
-    commonlyFun,
-    judgeEmptyUtil,
-    objectUtil,
-    typeJudgment
+    StringUtil:StringUtil,
+    arrayUtil:arrayUtil,
+    commonlyFun:commonlyFun,
+    judgeEmptyUtil:judgeEmptyUtil,
+    objectUtil:objectUtil,
+    typeJudgment:typeJudgment
 }

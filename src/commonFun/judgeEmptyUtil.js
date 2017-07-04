@@ -37,5 +37,5 @@ function isEmpty(value) {
 }
 
 export default {
-    isEmpty
+    isEmpty:isEmpty
 }

@@ -84,8 +84,8 @@ function unique(arr) {
 }
 
 export default {
-    arrayFilter,
-    arrayEvery,
-    arrayConcat,
-    unique
+    arrayFilter:arrayFilter,
+    arrayEvery:arrayEvery,
+    arrayConcat:arrayConcat,
+    unique:unique
 }

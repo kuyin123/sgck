@@ -19,5 +19,5 @@ function isEmptyObj(obj) {
 }
 
 export default {
-    isEmptyObj
+    isEmptyObj:isEmptyObj
 }

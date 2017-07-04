@@ -63,9 +63,9 @@ function isChine(str) {
 };
 
 export default {
-    isEmpty,
-    isEquals,
-    isEqualsIgnorecase,
-    isNum,
-    isChine
+    isEmpty:isEmpty,
+    isEquals:isEquals,
+    isEqualsIgnorecase:isEqualsIgnorecase,
+    isNum:isNum,
+    isChine:isChine
 }

@@ -21,5 +21,5 @@ function objectTurnArray(obj) {
 }
 
 export default {
-    objectTurnArray
+    objectTurnArray:objectTurnArray
 }
