@@ -9,7 +9,8 @@ var reg = {
   regTestEMail,
   regTestUsername,
   regTestPassword,
-  regTestDateFormat
+  regTestDateFormat,
+  regTestMd5
 };
 
 /* 正则表达式: regular expression */
