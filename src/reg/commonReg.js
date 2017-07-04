@@ -23,7 +23,8 @@ const regUsernameExp = /^\w{1,16}$/;
 const regPasswordExp = /^[\w#@$%^&*()~]{1,16}$/; // /^[A-Za-z0-9_#@$%^&*()~]{1,16}$/
 // 5.标准日期时间格式：yy/mm/dd hh:mm:ss 或者 yy-mm-dd hh:mm:ss
 const regDateFormatExp = /^\d{4,}(\/|-)(?:0?\d|1[12])(\/|-)(?:[012]?\d|3[01]) (?:[01]?\d|2[0-4]):(?:[0-5]?\d|60):(?:[0-5]?\d|60)$/;
-
+// 验证md5的正则表达式
+const regMd5Exp = /^([a-fA-F0-9]{32})$/;
 /*
 * 运用正则表达式判断: regExp.test
 * 传入字符串, 返回 Boolean 值
@@ -48,6 +49,10 @@ function regTestPassword(str) {
 function regTestDateFormat(str) {
   return regDateFormatExp.test(str);
 };
+
+function regTestMd5(str){
+	return regMd5Exp.test(str);
+}
 
 /* 暴露顶层对象 */
 export default reg
