@@ -8,14 +8,14 @@ import dataLocal from "./storage/localStorage"
 import dataSession from "./storage/dataSession"
 
 export{
-	common:common,
-	dateHandler:dateHandler,
-	eventTarget:eventTarget,
-	Inheritance:Inheritance,
-	md5:md5,
-	commonReg:commonReg,
-	dataLocal:dataLocal,
-	dataSession:dataSession
+	common,
+	dateHandler,
+	eventTarget,
+	Inheritance,
+	md5,
+	commonReg,
+	dataLocal,
+	dataSession
 }
 
 export default {
