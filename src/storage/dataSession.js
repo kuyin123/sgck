@@ -26,7 +26,7 @@ var dataSession = (function() {
 
     var storage = window.sessionStorage;
 
-    function set(key, val) {
+    var set = function (key, val) {
       if (key && !_isJSON(key)) {
         storage.setItem(key, _stringify(val));
       } else if (key && _isJSON(key) && !val) {
@@ -35,7 +35,7 @@ var dataSession = (function() {
       return this
     }
 
-    function get(key) {
+    var get = function get(key) {
       if (!key) {
         var ret = {};
         _forEach(function(key, val) {
@@ -49,22 +49,22 @@ var dataSession = (function() {
       return _deserialize(storage.getItem(key));
     }
 
-    function clear() {
+    var clear = function() {
       storage.clear();
       return this;
     }
 
-    function remove(key) {
+    var remove = function(key) {
       var val = get(key);
       storage.removeItem(key);
       return val;
     }
 
-    function has(key) {
+    var has = function (key) {
       return ({}).hasOwnProperty.call(get(), key);
     }
 
-    function keys() {
+    var keys = function (){
       var d = [];
       _forEach(function(k, list) {
         d.push(k);
@@ -72,11 +72,11 @@ var dataSession = (function() {
       return d;
     }
 
-    function size() {
+    var size = function() {
       return keys().length;
     }
 
-    function _forEach(callback) {
+    var _forEach = function (callback) {
       for (var i = 0; i < storage.length; i++) {
         var key = storage.key(i);
         if (callback(key, get(key)) === false) break;

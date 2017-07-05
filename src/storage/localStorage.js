@@ -11,7 +11,7 @@ var storage = (function () {
         var ls = window.localStorage;
 
         //更新缓存数据
-        function set(name, val) {
+        var set = function (name, val) {
             var str = typeof name === 'string' || typeof name === "number";
             var obj = typeof val === 'object';
             if (!str)return;
@@ -20,7 +20,7 @@ var storage = (function () {
         };
 
         //获取缓存数据
-        function get(name) {
+        var get = function(name) {
             var item = ls.getItem(name);
             if (name && item) {
                 return (item.indexOf('{') != -1 || item.indexOf('[') != -1) ? JSON.parse(item) : item;
@@ -30,12 +30,12 @@ var storage = (function () {
         };
 
         //删除缓存数据
-        function remove(name) {
+        var remove = function(name) {
             return ls.removeItem(name);
         };
 
         //清除所有缓存数据
-        function clear() {
+        var clear = function() {
             ls.clear();
         };
 
