@@ -5,11 +5,11 @@
 
 /* export 的顶层对象 */
 var dateHandler = {
-  prevDay,
-  prevWeek,
-  prevMonth,
-  prevYear,
-  dateFormat
+  prevDay:prevDay,
+  prevWeek:prevWeek,
+  prevMonth:prevMonth,
+  prevYear:prevYear,
+  dateFormat:dateFormat
 };
 
 /*
