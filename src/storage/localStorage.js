@@ -4,16 +4,16 @@
  * by gouxiaojun
  * */
 
-let storage = (function () {
+var storage = (function () {
 
     if (window.localStorage) {
 
-        let ls = window.localStorage;
+        var ls = window.localStorage;
 
         //更新缓存数据
         function set(name, val) {
-            let str = typeof name === 'string' || typeof name === "number";
-            let obj = typeof val === 'object';
+            var str = typeof name === 'string' || typeof name === "number";
+            var obj = typeof val === 'object';
             if (!str)return;
             str && !obj && ls.setItem(name, val);
             str && obj && ls.setItem(name, JSON.stringify(val));
@@ -21,7 +21,7 @@ let storage = (function () {
 
         //获取缓存数据
         function get(name) {
-            let item = ls.getItem(name);
+            var item = ls.getItem(name);
             if (name && item) {
                 return (item.indexOf('{') != -1 || item.indexOf('[') != -1) ? JSON.parse(item) : item;
             } else {

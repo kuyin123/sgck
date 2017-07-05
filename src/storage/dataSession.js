@@ -20,24 +20,24 @@ function _deserialize(value) {
   }
 }
 
-let dataSession = (function() {
+var dataSession = (function() {
 
   if (window.sessionStorage) {
 
-    let storage = window.sessionStorage;
+    var storage = window.sessionStorage;
 
     function set(key, val) {
       if (key && !_isJSON(key)) {
         storage.setItem(key, _stringify(val));
       } else if (key && _isJSON(key) && !val) {
-        for (let a in key) this.set(a, key[a]);
+        for (var a in key) this.set(a, key[a]);
       }
       return this
     }
 
     function get(key) {
       if (!key) {
-        let ret = {};
+        var ret = {};
         _forEach(function(key, val) {
           ret[key] = val;
         });
@@ -55,7 +55,7 @@ let dataSession = (function() {
     }
 
     function remove(key) {
-      let val = get(key);
+      var val = get(key);
       storage.removeItem(key);
       return val;
     }
