@@ -5,12 +5,12 @@
 
 /* 要 export 的顶层对象 */
 var reg = {
-  regTestPhoneNo,
-  regTestEMail,
-  regTestUsername,
-  regTestPassword,
-  regTestDateFormat,
-  regTestMd5
+  regTestPhoneNo:regTestPhoneNo,
+  regTestEMail:regTestEMail,
+  regTestUsername:regTestUsername,
+  regTestPassword:regTestPassword,
+  regTestDateFormat:regTestDateFormat,
+  regTestMd5:regTestMd5
 };
 
 /* 正则表达式: regular expression */
