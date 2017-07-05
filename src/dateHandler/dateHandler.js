@@ -26,12 +26,12 @@ function prevWeek(src) {
 };
 // 3. 前一月
 function prevMonth(src) {
-  const year = src.getFullYear();
-  const month = src.getMonth();
-  const date = src.getDate();
-  const newYear = month === 0 ? year - 1 : year;
-  const newMonth = month === 0 ? 11 : month - 1;
-  const newMonthDayCount = new Date(newYear, newMonth + 1, 0).getDate(); //getDayCountOfMonth(newYear, newMonth);
+  var year = src.getFullYear();
+  var month = src.getMonth();
+  var date = src.getDate();
+  var newYear = month === 0 ? year - 1 : year;
+  var newMonth = month === 0 ? 11 : month - 1;
+  var newMonthDayCount = new Date(newYear, newMonth + 1, 0).getDate(); //getDayCountOfMonth(newYear, newMonth);
   if (newMonthDayCount < date) {
     src.setDate(newMonthDayCount);
   }
