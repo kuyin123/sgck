@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -83,59 +83,86 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.dataSession = exports.dataLocal = exports.commonReg = exports.md5 = exports.Inheritance = exports.eventTarget = exports.dateHandler = exports.common = undefined;
 
-var _common = __webpack_require__(1);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _common2 = _interopRequireDefault(_common);
+/*
+ *常用类型判断
+ * */
 
-var _dateHandler = __webpack_require__(4);
+var objToString = Object.prototype.toString;
 
-var _dateHandler2 = _interopRequireDefault(_dateHandler);
+/**
+ * @param {*} value
+ * @return {boolean}
+ */
+function isArray(value) {
+	return objToString.call(value) === '[object Array]';
+};
 
-var _eventTarget = __webpack_require__(5);
+/**
+ * @param {*} value
+ * @return {boolean}
+ */
+function isFunction(value) {
+	return typeof value === 'function';
+};
 
-var _eventTarget2 = _interopRequireDefault(_eventTarget);
+/**
+ * @param {*} value
+ * @return {boolean}
+ */
+function isString(value) {
+	return objToString.call(value) === '[object String]';
+};
 
-var _Inheritance = __webpack_require__(6);
+/**
+ * @param {*} value
+ * @return {boolean}
+ */
+function isObject(value) {
+	// Avoid a V8 JIT bug in Chrome 19-20.
+	// See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
+	var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+	return type === 'function' || !!value && type == 'object';
+};
 
-var _Inheritance2 = _interopRequireDefault(_Inheritance);
+function isNumber(num) {
+	var type = typeof num === 'undefined' ? 'undefined' : _typeof(num);
+	return num === 'number' || num instanceof Number;
+};
 
-var _md = __webpack_require__(7);
+function isBoolean(arg) {
+	return typeof arg === 'boolean';
+}
 
-var _md2 = _interopRequireDefault(_md);
+function isNull(arg) {
+	return arg === null;
+}
 
-var _commonReg = __webpack_require__(8);
+function isNullOrUndefined(arg) {
+	return arg == null;
+}
 
-var _commonReg2 = _interopRequireDefault(_commonReg);
+function isUndefined(arg) {
+	return arg === void 0;
+}
 
-var _localStorage = __webpack_require__(9);
+function isDate(d) {
+	return isObject(d) && objectToString(d) === '[object Date]';
+}
 
-var _localStorage2 = _interopRequireDefault(_localStorage);
-
-var _dataSession = __webpack_require__(10);
-
-var _dataSession2 = _interopRequireDefault(_dataSession);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.common = _common2.default;
-exports.dateHandler = _dateHandler2.default;
-exports.eventTarget = _eventTarget2.default;
-exports.Inheritance = _Inheritance2.default;
-exports.md5 = _md2.default;
-exports.commonReg = _commonReg2.default;
-exports.dataLocal = _localStorage2.default;
-exports.dataSession = _dataSession2.default;
 exports.default = {
-	common: _common2.default,
-	dateHandler: _dateHandler2.default,
-	eventTarget: _eventTarget2.default,
-	Inheritance: _Inheritance2.default,
-	md5: _md2.default,
-	commonReg: _commonReg2.default,
-	dataLocal: _localStorage2.default,
-	dataSession: _dataSession2.default
+	isArray: isArray,
+	isFunction: isFunction,
+	isString: isString,
+	isObject: isObject,
+	isNumber: isNumber,
+	isBoolean: isBoolean,
+	isNull: isNull,
+	isNullOrUndefined: isNullOrUndefined,
+	isUndefined: isUndefined,
+	isDate: isDate
 };
 
 /***/ }),
@@ -146,22 +173,33 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
-var _stringUtil = __webpack_require__(2);
-
-var _stringUtil2 = _interopRequireDefault(_stringUtil);
-
-var _typeJudgment = __webpack_require__(3);
+var _typeJudgment = __webpack_require__(0);
 
 var _typeJudgment2 = _interopRequireDefault(_typeJudgment);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/*
+ * 判断对象是否为空
+ * 不排除对象原型上的属性
+ * */
+function isEmptyObj(obj) {
+    //判断是否是对象
+    if (_typeJudgment2.default.isObject(obj)) return;
+    for (var key in obj) {
+        return false;
+    }
+    return true;
+} /*
+   * js对象工具方法
+   * by gouxiaojun
+   */
+
 exports.default = {
-	StringUtil: _stringUtil2.default,
-	typeJudgment: _typeJudgment2.default
+    isEmptyObj: isEmptyObj
 };
 
 /***/ }),
@@ -254,92 +292,323 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+/*
+ * JS数组工具类方法
+ * by gouxiaojun
+ */
 
 /*
- *常用类型判断
+ * 判断数组是否为空
+ *
  * */
-
-var objToString = Object.prototype.toString;
-
-/**
- * @param {*} value
- * @return {boolean}
- */
-function isArray(value) {
-	return objToString.call(value) === '[object Array]';
-};
-
-/**
- * @param {*} value
- * @return {boolean}
- */
-function isFunction(value) {
-	return typeof value === 'function';
-};
-
-/**
- * @param {*} value
- * @return {boolean}
- */
-function isString(value) {
-	return objToString.call(value) === '[object String]';
-};
-
-/**
- * @param {*} value
- * @return {boolean}
- */
-function isObject(value) {
-	// Avoid a V8 JIT bug in Chrome 19-20.
-	// See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
-	var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
-	return type === 'function' || !!value && type == 'object';
-};
-
-function isNumber(num) {
-	var type = typeof num === 'undefined' ? 'undefined' : _typeof(num);
-	return num === 'number' || num instanceof Number;
-};
-
-function isBoolean(arg) {
-	return typeof arg === 'boolean';
+function isEmpty(arr) {
+    return arr.length === 0;
 }
 
-function isNull(arg) {
-	return arg === null;
+/*
+ * 数组的过滤方法且返回包含的数组
+ * @param {Array} [array] 需要过滤的数组
+ * @param {Function} predicate 设定需要过滤的值的方法
+ * @returns {Array}
+ */
+function arrayFilter(array, predicate) {
+    var index = -1,
+        length = array == null ? 0 : array.length,
+        resIndex = 0,
+        result = [];
+
+    while (++index < length) {
+        var value = array[index];
+        if (predicate(value, index, array)) {
+            result[resIndex++] = value;
+        }
+    }
+    return result;
 }
 
-function isNullOrUndefined(arg) {
-	return arg == null;
+/*
+ * 遍历数组方法
+ * @param {Array} [array] 需要过滤的数组
+ * @param {Function} predicate 设定规则
+ * @returns {boolean}
+ */
+function arrayEvery(array, predicate) {
+    var index = -1,
+        length = array == null ? 0 : array.length;
+
+    while (++index < length) {
+        if (!predicate(array[index], index, array)) {
+            return false;
+        }
+    }
+    return true;
 }
 
-function isUndefined(arg) {
-	return arg === void 0;
+/*
+ * 数组拼接方法
+ * @returns {array}
+ */
+function arrayConcat() {
+    if (arguments.length) return;
+    var arrNew;
+    for (var i = 0, l = arguments.length; i < l; i++) {
+        var nextArr = arguments[i];
+        !i && (arrNew = nextArr)(!!i) && (arrNew = arrNew.concat(nextArr));
+    }
+    return arrNew;
 }
 
-function isDate(d) {
-	return isObject(d) && objectToString(d) === '[object Date]';
+/*
+ * 数组去重方法
+ * @param {Array} [array] 需要去重的数组
+ * @returns {array}
+ * */
+function unique(arr) {
+    if (arr.length) return;
+    var hash = {},
+        ret = [];
+    for (var i = 0, l = arr.length; i < l; i++) {
+        if (!hash[arr[i]]) {
+            hash[arr[i]] = true;
+            ret.push(arr[i]);
+        }
+    }
+    return ret;
 }
 
 exports.default = {
-	isArray: isArray,
-	isFunction: isFunction,
-	isString: isString,
-	isObject: isObject,
-	isNumber: isNumber,
-	isBoolean: isBoolean,
-	isNull: isNull,
-	isNullOrUndefined: isNullOrUndefined,
-	isUndefined: isUndefined,
-	isDate: isDate
+    arrayFilter: arrayFilter,
+    arrayEvery: arrayEvery,
+    arrayConcat: arrayConcat,
+    unique: unique
 };
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.dataSession = exports.dataLocal = exports.commonReg = exports.md5 = exports.Inheritance = exports.eventTarget = exports.dateHandler = exports.common = undefined;
+
+var _common = __webpack_require__(5);
+
+var _common2 = _interopRequireDefault(_common);
+
+var _dateHandler = __webpack_require__(8);
+
+var _dateHandler2 = _interopRequireDefault(_dateHandler);
+
+var _eventTarget = __webpack_require__(9);
+
+var _eventTarget2 = _interopRequireDefault(_eventTarget);
+
+var _Inheritance = __webpack_require__(10);
+
+var _Inheritance2 = _interopRequireDefault(_Inheritance);
+
+var _md = __webpack_require__(11);
+
+var _md2 = _interopRequireDefault(_md);
+
+var _commonReg = __webpack_require__(12);
+
+var _commonReg2 = _interopRequireDefault(_commonReg);
+
+var _localStorage = __webpack_require__(13);
+
+var _localStorage2 = _interopRequireDefault(_localStorage);
+
+var _dataSession = __webpack_require__(14);
+
+var _dataSession2 = _interopRequireDefault(_dataSession);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.common = _common2.default;
+exports.dateHandler = _dateHandler2.default;
+exports.eventTarget = _eventTarget2.default;
+exports.Inheritance = _Inheritance2.default;
+exports.md5 = _md2.default;
+exports.commonReg = _commonReg2.default;
+exports.dataLocal = _localStorage2.default;
+exports.dataSession = _dataSession2.default;
+exports.default = {
+	common: _common2.default,
+	dateHandler: _dateHandler2.default,
+	eventTarget: _eventTarget2.default,
+	Inheritance: _Inheritance2.default,
+	md5: _md2.default,
+	commonReg: _commonReg2.default,
+	dataLocal: _localStorage2.default,
+	dataSession: _dataSession2.default
+};
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _stringUtil = __webpack_require__(2);
+
+var _stringUtil2 = _interopRequireDefault(_stringUtil);
+
+var _arrayUtil = __webpack_require__(3);
+
+var _arrayUtil2 = _interopRequireDefault(_arrayUtil);
+
+var _commonlyFun = __webpack_require__(6);
+
+var _commonlyFun2 = _interopRequireDefault(_commonlyFun);
+
+var _judgeEmptyUtil = __webpack_require__(7);
+
+var _judgeEmptyUtil2 = _interopRequireDefault(_judgeEmptyUtil);
+
+var _objectUtil = __webpack_require__(1);
+
+var _objectUtil2 = _interopRequireDefault(_objectUtil);
+
+var _typeJudgment = __webpack_require__(0);
+
+var _typeJudgment2 = _interopRequireDefault(_typeJudgment);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    StringUtil: _stringUtil2.default,
+    arrayUtil: _arrayUtil2.default,
+    commonlyFun: _commonlyFun2.default,
+    judgeEmptyUtil: _judgeEmptyUtil2.default,
+    objectUtil: _objectUtil2.default,
+    typeJudgment: _typeJudgment2.default
+};
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _typeJudgment = __webpack_require__(0);
+
+var _typeJudgment2 = _interopRequireDefault(_typeJudgment);
+
+var _objectUtil = __webpack_require__(1);
+
+var _objectUtil2 = _interopRequireDefault(_objectUtil);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * 对象转数组
+ * */
+
+/*
+ * js常用的方法
+ * by gouxiaojun
+ */
+
+function objectTurnArray(obj) {
+    //先判断是否是对象并且不是空对象
+    if (!_typeJudgment2.default.isObject(obj) && _objectUtil2.default.isEmptyObj(obj)) return;
+    var arr = [];
+    for (var key in obj) {
+        arr.push(obj[key]);
+    }
+    return arr;
+}
+
+exports.default = {
+    objectTurnArray: objectTurnArray
+};
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _stringUtil = __webpack_require__(2);
+
+var _stringUtil2 = _interopRequireDefault(_stringUtil);
+
+var _objectUtil = __webpack_require__(1);
+
+var _objectUtil2 = _interopRequireDefault(_objectUtil);
+
+var _arrayUtil = __webpack_require__(3);
+
+var _arrayUtil2 = _interopRequireDefault(_arrayUtil);
+
+var _typeJudgment = __webpack_require__(0);
+
+var _typeJudgment2 = _interopRequireDefault(_typeJudgment);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * 判断是否为空
+ * */
+/*
+ * js判断空的方法
+ * by gouxiaojun
+ */
+
+function isEmpty(value) {
+    //1.判读出null,'',0,false,undefined的情况
+    if (!value) {
+        return true;
+    }
+    //2.在判断类型
+    var type = _typeJudgment2.default.isString(value) && 1 || _typeJudgment2.default.isArray(value) && 2 || _typeJudgment2.default.isObject(value) && 3;
+    var status = true;
+    //3.判断是否为空
+    switch (type) {
+        case 1:
+            status = _stringUtil2.default.isEmpty(value);
+            break;
+        case 2:
+            status = _arrayUtil2.default.isEmpty(value);
+            break;
+        case 3:
+            status = _objectUtil2.default.isEmptyObj(value);
+            break;
+        default:
+            status = true;
+    }
+    return status;
+}
+
+exports.default = {
+    isEmpty: isEmpty
+};
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -421,7 +690,7 @@ function dateFormat(date, fmt) {
 exports.default = dateHandler;
 
 /***/ }),
-/* 5 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -477,7 +746,7 @@ EventTarget.prototype = {
 exports.default = EventTarget;
 
 /***/ }),
-/* 6 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -566,7 +835,7 @@ Inheritance.inheritPrototype = function (subType, superType) {
 exports.default = Inheritance;
 
 /***/ }),
-/* 7 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -795,7 +1064,7 @@ function md5(string) {
 exports.default = md5;
 
 /***/ }),
-/* 8 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -815,7 +1084,8 @@ var reg = {
   regTestEMail: regTestEMail,
   regTestUsername: regTestUsername,
   regTestPassword: regTestPassword,
-  regTestDateFormat: regTestDateFormat
+  regTestDateFormat: regTestDateFormat,
+  regTestMd5: regTestMd5
 };
 
 /* 正则表达式: regular expression */
@@ -829,7 +1099,8 @@ var regUsernameExp = /^\w{1,16}$/;
 var regPasswordExp = /^[\w#@$%^&*()~]{1,16}$/; // /^[A-Za-z0-9_#@$%^&*()~]{1,16}$/
 // 5.标准日期时间格式：yy/mm/dd hh:mm:ss 或者 yy-mm-dd hh:mm:ss
 var regDateFormatExp = /^\d{4,}(\/|-)(?:0?\d|1[12])(\/|-)(?:[012]?\d|3[01]) (?:[01]?\d|2[0-4]):(?:[0-5]?\d|60):(?:[0-5]?\d|60)$/;
-
+// 验证md5的正则表达式
+var regMd5Exp = /^([a-fA-F0-9]{32})$/;
 /*
 * 运用正则表达式判断: regExp.test
 * 传入字符串, 返回 Boolean 值
@@ -855,11 +1126,15 @@ function regTestDateFormat(str) {
   return regDateFormatExp.test(str);
 };
 
+function regTestMd5(str) {
+  return regMd5Exp.test(str);
+}
+
 /* 暴露顶层对象 */
 exports.default = reg;
 
 /***/ }),
-/* 9 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -880,8 +1155,10 @@ var storage = function () {
 
     if (window.localStorage) {
 
+        var ls = window.localStorage;
+
         //更新缓存数据
-        var write = function write(name, val) {
+        var set = function set(name, val) {
             var str = typeof name === 'string' || typeof name === "number";
             var obj = (typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object';
             if (!str) return;
@@ -890,7 +1167,7 @@ var storage = function () {
         };
 
         //获取缓存数据
-        var read = function read(name) {
+        var get = function get(name) {
             var item = ls.getItem(name);
             if (name && item) {
                 return item.indexOf('{') != -1 || item.indexOf('[') != -1 ? JSON.parse(item) : item;
@@ -905,17 +1182,15 @@ var storage = function () {
         };
 
         //清除所有缓存数据
-        var clearAll = function clearAll() {
+        var clear = function clear() {
             ls.clear();
         };
 
-        var ls = window.localStorage;;;;;
-
         return {
-            write: write,
-            read: read,
+            set: set,
+            get: get,
             remove: remove,
-            clearAll: clearAll
+            clear: clear
         };
     } else {
         throw new Error('浏览器不支持LocalStorage对象。。。。。。。');
@@ -925,7 +1200,7 @@ var storage = function () {
 exports.default = storage;
 
 /***/ }),
-/* 10 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -962,6 +1237,9 @@ function _deserialize(value) {
 var dataSession = function () {
 
   if (window.sessionStorage) {
+
+    var storage = window.sessionStorage;
+
     var set = function set(key, val) {
       if (key && !_isJSON(key)) {
         storage.setItem(key, _stringify(val));
@@ -1021,9 +1299,6 @@ var dataSession = function () {
       }
       return this;
     };
-
-    var storage = window.sessionStorage;
-
     return {
       set: set,
       get: get,
