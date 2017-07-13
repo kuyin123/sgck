@@ -1,4 +1,3 @@
-
 /*
  * JS数组工具类方法
  * by gouxiaojun
@@ -9,7 +8,7 @@
  *
  * */
 function isEmpty(arr) {
-    return arr.length === 0
+  return arr.length === 0
 }
 
 /*
@@ -19,18 +18,18 @@ function isEmpty(arr) {
  * @returns {Array}
  */
 function arrayFilter(array, predicate) {
-    var index = -1,
-        length = array == null ? 0 : array.length,
-        resIndex = 0,
-        result = [];
+  var index = -1,
+    length = array == null ? 0 : array.length,
+    resIndex = 0,
+    result = [];
 
-    while (++index < length) {
-        var value = array[index];
-        if (predicate(value, index, array)) {
-            result[resIndex++] = value;
-        }
+  while (++index < length) {
+    var value = array[index];
+    if (predicate(value, index, array)) {
+      result[resIndex++] = value;
     }
-    return result;
+  }
+  return result;
 }
 
 /*
@@ -40,15 +39,15 @@ function arrayFilter(array, predicate) {
  * @returns {boolean}
  */
 function arrayEvery(array, predicate) {
-    var index = -1,
-        length = array == null ? 0 : array.length;
+  var index = -1,
+    length = array == null ? 0 : array.length;
 
-    while (++index < length) {
-        if (!predicate(array[index], index, array)) {
-            return false;
-        }
+  while (++index < length) {
+    if (!predicate(array[index], index, array)) {
+      return false;
     }
-    return true;
+  }
+  return true;
 }
 
 /*
@@ -56,14 +55,14 @@ function arrayEvery(array, predicate) {
  * @returns {array}
  */
 function arrayConcat() {
-    if (arguments.length)return;
-    var arrNew;
-    for (var i = 0, l = arguments.length; i < l; i++) {
-        var nextArr = arguments[i];
-        (!i) && (arrNew = nextArr)
-        (!!i) && (arrNew = arrNew.concat(nextArr))
-    }
-    return arrNew;
+  if (arguments.length)return;
+  var arrNew;
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    var nextArr = arguments[i];
+    (!i) && (arrNew = nextArr)
+    (!!i) && (arrNew = arrNew.concat(nextArr))
+  }
+  return arrNew;
 }
 
 /*
@@ -72,20 +71,21 @@ function arrayConcat() {
  * @returns {array}
  * */
 function unique(arr) {
-    if (arr.length)return;
-    var hash = {}, ret = [];
-    for (var i = 0, l = arr.length; i < l; i++) {
-        if (!hash[arr[i]]) {
-            hash[arr[i]] = true;
-            ret.push(arr[i]);
-        }
+  if (arr.length)return;
+  var hash = {}, ret = [];
+  for (var i = 0, l = arr.length; i < l; i++) {
+    if (!hash[arr[i]]) {
+      hash[arr[i]] = true;
+      ret.push(arr[i]);
     }
-    return ret;
+  }
+  return ret;
 }
 
 export default {
-    arrayFilter:arrayFilter,
-    arrayEvery:arrayEvery,
-    arrayConcat:arrayConcat,
-    unique:unique
+  isEmpty: isEmpty,
+  arrayFilter: arrayFilter,
+  arrayEvery: arrayEvery,
+  arrayConcat: arrayConcat,
+  unique: unique
 }
