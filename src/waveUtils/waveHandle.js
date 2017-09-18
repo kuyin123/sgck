@@ -28,7 +28,8 @@ baseWaveTool.prototype.readByteArray = function(oldArray){
 }
 
 function baseWaveRequest(reqInterface) {
-  this.url = $service_config.url + reqInterface;
+  this.url = reqInterface;
+  //this.url = $service_config.url + reqInterface;
   //this.success = success;
   //this.error = error;
 }
