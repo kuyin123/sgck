@@ -99,7 +99,7 @@ baseWaveRequest.prototype.send = function (data, success, error) {
       if (error) {
         error(this.response);
       } else {
-        alert('获取数据失败!');
+       // alert('获取数据失败!');
       }
     }
 
