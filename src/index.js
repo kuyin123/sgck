@@ -22,17 +22,3 @@ export{
   baseWaveTool,
   baseWaveRequest
 }
-
-export default {
-  common: common,
-  dateHandler: dateHandler,
-  eventTarget: eventTarget,
-  Inheritance: Inheritance,
-  md5: md5,
-  commonReg: commonReg,
-  dataLocal: dataLocal,
-  dataSession: dataSession,
-  fft,
-  baseWaveTool,
-  baseWaveRequest
-}

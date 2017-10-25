@@ -173,7 +173,7 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _typeJudgment = __webpack_require__(0);
@@ -187,19 +187,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * 不排除对象原型上的属性
  * */
 function isEmptyObj(obj) {
-    //判断是否是对象
-    if (_typeJudgment2.default.isObject(obj)) return;
-    for (var key in obj) {
-        return false;
-    }
-    return true;
+  //判断是否是对象
+  if (!_typeJudgment2.default.isObject(obj)) return;
+  for (var key in obj) {
+    return false;
+  }
+  return true;
 } /*
    * js对象工具方法
    * by gouxiaojun
    */
 
 exports.default = {
-    isEmptyObj: isEmptyObj
+  isEmptyObj: isEmptyObj
 };
 
 /***/ }),
@@ -292,9 +292,8 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-
 /*
  * JS数组工具类方法
  * by gouxiaojun
@@ -305,7 +304,7 @@ Object.defineProperty(exports, "__esModule", {
  *
  * */
 function isEmpty(arr) {
-    return arr.length === 0;
+  return arr.length === 0;
 }
 
 /*
@@ -315,18 +314,18 @@ function isEmpty(arr) {
  * @returns {Array}
  */
 function arrayFilter(array, predicate) {
-    var index = -1,
-        length = array == null ? 0 : array.length,
-        resIndex = 0,
-        result = [];
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      resIndex = 0,
+      result = [];
 
-    while (++index < length) {
-        var value = array[index];
-        if (predicate(value, index, array)) {
-            result[resIndex++] = value;
-        }
+  while (++index < length) {
+    var value = array[index];
+    if (predicate(value, index, array)) {
+      result[resIndex++] = value;
     }
-    return result;
+  }
+  return result;
 }
 
 /*
@@ -336,15 +335,15 @@ function arrayFilter(array, predicate) {
  * @returns {boolean}
  */
 function arrayEvery(array, predicate) {
-    var index = -1,
-        length = array == null ? 0 : array.length;
+  var index = -1,
+      length = array == null ? 0 : array.length;
 
-    while (++index < length) {
-        if (!predicate(array[index], index, array)) {
-            return false;
-        }
+  while (++index < length) {
+    if (!predicate(array[index], index, array)) {
+      return false;
     }
-    return true;
+  }
+  return true;
 }
 
 /*
@@ -352,13 +351,13 @@ function arrayEvery(array, predicate) {
  * @returns {array}
  */
 function arrayConcat() {
-    if (arguments.length) return;
-    var arrNew;
-    for (var i = 0, l = arguments.length; i < l; i++) {
-        var nextArr = arguments[i];
-        !i && (arrNew = nextArr)(!!i) && (arrNew = arrNew.concat(nextArr));
-    }
-    return arrNew;
+  if (arguments.length) return;
+  var arrNew;
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    var nextArr = arguments[i];
+    !i && (arrNew = nextArr)(!!i) && (arrNew = arrNew.concat(nextArr));
+  }
+  return arrNew;
 }
 
 /*
@@ -367,23 +366,24 @@ function arrayConcat() {
  * @returns {array}
  * */
 function unique(arr) {
-    if (arr.length) return;
-    var hash = {},
-        ret = [];
-    for (var i = 0, l = arr.length; i < l; i++) {
-        if (!hash[arr[i]]) {
-            hash[arr[i]] = true;
-            ret.push(arr[i]);
-        }
+  if (arr.length) return;
+  var hash = {},
+      ret = [];
+  for (var i = 0, l = arr.length; i < l; i++) {
+    if (!hash[arr[i]]) {
+      hash[arr[i]] = true;
+      ret.push(arr[i]);
     }
-    return ret;
+  }
+  return ret;
 }
 
 exports.default = {
-    arrayFilter: arrayFilter,
-    arrayEvery: arrayEvery,
-    arrayConcat: arrayConcat,
-    unique: unique
+  isEmpty: isEmpty,
+  arrayFilter: arrayFilter,
+  arrayEvery: arrayEvery,
+  arrayConcat: arrayConcat,
+  unique: unique
 };
 
 /***/ }),
@@ -394,9 +394,9 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
-exports.dataSession = exports.dataLocal = exports.commonReg = exports.md5 = exports.Inheritance = exports.eventTarget = exports.dateHandler = exports.common = undefined;
+exports.baseWaveRequest = exports.baseWaveTool = exports.fft = exports.dataSession = exports.dataLocal = exports.commonReg = exports.md5 = exports.Inheritance = exports.eventTarget = exports.dateHandler = exports.common = undefined;
 
 var _common = __webpack_require__(5);
 
@@ -430,6 +430,12 @@ var _dataSession = __webpack_require__(14);
 
 var _dataSession2 = _interopRequireDefault(_dataSession);
 
+var _fft = __webpack_require__(15);
+
+var _fft2 = _interopRequireDefault(_fft);
+
+var _waveHandle = __webpack_require__(16);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.common = _common2.default;
@@ -440,16 +446,24 @@ exports.md5 = _md2.default;
 exports.commonReg = _commonReg2.default;
 exports.dataLocal = _localStorage2.default;
 exports.dataSession = _dataSession2.default;
-exports.default = {
-	common: _common2.default,
-	dateHandler: _dateHandler2.default,
-	eventTarget: _eventTarget2.default,
-	Inheritance: _Inheritance2.default,
-	md5: _md2.default,
-	commonReg: _commonReg2.default,
-	dataLocal: _localStorage2.default,
-	dataSession: _dataSession2.default
-};
+exports.fft = _fft2.default;
+exports.baseWaveTool = _waveHandle.baseWaveTool;
+exports.baseWaveRequest = _waveHandle.baseWaveRequest;
+/**
+export default {
+  common: common,
+  dateHandler: dateHandler,
+  eventTarget: eventTarget,
+  Inheritance: Inheritance,
+  md5: md5,
+  commonReg: commonReg,
+  dataLocal: dataLocal,
+  dataSession: dataSession,
+  fft,
+  baseWaveTool,
+  baseWaveRequest
+}
+*/
 
 /***/ }),
 /* 5 */
@@ -1314,6 +1328,826 @@ var dataSession = function () {
 }();
 
 exports.default = dataSession;
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var FFT = function () {
+	function FFT(x, y, OutPhase) {
+		_classCallCheck(this, FFT);
+
+		//OutX 输出频点
+		this.OutX = x || [];
+		// OutY 输出幅值
+		this.OutY = y || [];
+		// OutPhase 输出相位
+		this.OutPhase = OutPhase || {};
+	}
+
+	_createClass(FFT, [{
+		key: "getYExtremumsIndex",
+		value: function getYExtremumsIndex() {
+			var sortByY = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+			var retArr = [];
+
+			try {
+				var v;
+				var i = 0;
+				if (OutY[0] > OutY[1]) {
+					retArr.push(0);
+					i++; // the next must not be extremum
+				}
+
+				var n = OutY.length;
+				for (var _i = 0; _i < n - 1; _i++) {
+					v = OutY[_i];
+					if (v > OutY[_i - 1] && v > OutY[_i + 1]) {
+						retArr.push(_i);
+						_i++; // the next must not be extremum
+					}
+				}
+
+				if (i < n && OutY[i] > OutY[i - 1]) retArr.push(i);
+
+				if (sortByY) {
+					retArr.sort(sortOnYIndex);
+					// retArr.reverse();
+				}
+			} catch (e) {}
+
+			return retArr;
+		}
+	}, {
+		key: "sortOnYIndex",
+		value: function sortOnYIndex(a, b) {
+			var aPrice = OutY[b];
+			var bPrice = OutY[a];
+			if (aPrice > bPrice) return 1;else if (aPrice < bPrice) return -1;else //aPrice == bPrice
+				return 0;
+		}
+
+		/**
+   * 频谱分析
+   * @param data 波形采用数组
+   * @param freq 采样频率
+   * @param nFirst FFT原始数据的起始点位置
+   * @param nCount FFT原始数据的点数
+   * @param mi 指定分析的线数相对2的幂次方，如： mi = 10，则线数为 2 的 10 次方 1024
+   * @param 正常返回 > 0 的最大幅值，-1 表示失败
+   */
+
+	}, {
+		key: "waveFFT",
+		value: function waveFFT(data, freq) {
+			if (!isFinite(data[0])) {
+				return -1;
+			}
+			var nPointNumber = data.length;
+			var mi = Math.log(nPointNumber) / Math.LN2;
+			if (nPointNumber != Math.pow(2, mi)) {
+				return -1;
+				//throw new Error("waveFFT: the nCount must be pow of 2");
+			}
+
+			var fDF = freq / nPointNumber;
+
+			// 抽取
+			var x_arr = [];
+			var y_arr = [];
+			x_arr.push(0); // 插入空白点
+			x_arr = x_arr.concat(data);
+
+			// 计算平均值average，并且令x[i] -= average以消除直流分量
+			var i;
+			var sum = 0;
+			for (i = 1; i < x_arr.length; i++) {
+				sum += x_arr[i];
+			}var average = sum / nPointNumber;
+			i = 1;
+			for (; i < x_arr.length; i++) {
+				x_arr[i] -= average;
+			}y_arr.length = nPointNumber + 1;
+			this._o_fft(1, mi, x_arr, y_arr, nPointNumber);
+
+			// 处理计算结果
+			var fMaxFZ = 0;
+			var lineCount = nPointNumber / 2.56;
+			var OutX = this.OutX = [];
+			var OutY = this.OutY = [];
+			var OutPhase = this.OutPhase = [];
+			OutX.length = lineCount;
+			OutY.length = lineCount;
+			OutPhase.length = lineCount;
+			var xi, yi;
+			i = 0;
+			for (; i < lineCount; i++) {
+				xi = x_arr[i + 1];
+				yi = y_arr[i + 1];
+				// 频率
+				OutX[i] = Number((i * fDF).toFixed(2));
+				// 幅值
+				OutY[i] = Number((Math.sqrt(xi * xi + yi * yi) * 4 / nPointNumber).toFixed(2));
+				// 相位 (弧度)
+				OutPhase[i] = -(Math.atan2(yi, xi) - Math.PI / 2);
+				// 最大幅值
+				fMaxFZ = Math.max(OutY[i], fMaxFZ);
+			}
+
+			if (fMaxFZ < Number.NEGATIVE_INFINITY || fMaxFZ > Number.POSITIVE_INFINITY) return -1;
+
+			return fMaxFZ;
+		}
+
+		/**
+   * 频谱分析
+   * @param data 波形采用数组
+   * @param freq 采样频率
+   * @param nFirst FFT原始数据的起始点位置
+   * @param nCount FFT原始数据的点数
+   * @param mi 指定分析的线数相对2的幂次方，如： mi = 10，则线数为 2 的 10 次方 1024
+   * @param 正常返回 > 0 的最大幅值，-1 表示失败
+   */
+
+	}, {
+		key: "waveFFTWithInterp",
+		value: function waveFFTWithInterp(data, freq, nFirst, nCount, mi) {
+			var nPointNumber = 1;
+			for (var _i2 = 0; _i2 < mi; _i2++) {
+				nPointNumber *= 2;
+			}var pBegin = nFirst;
+			var nWaveCount = data.length;
+			if (nFirst >= nWaveCount) return -1;
+			if (nFirst + nCount > nWaveCount) nCount = nWaveCount - nFirst;
+
+			var all_count = nCount;
+			var fDF = freq / all_count;
+
+			// 抽取
+			var x_arr = [];
+			var y_arr = [];
+			x_arr.length = nPointNumber + 1;
+			x_arr[0] = 0; // 插入空白点
+			var pos, ipos0, ipos1;
+			var v0, v1, t, v;
+			i = 0;
+			for (; i < nPointNumber - 1; i++) {
+				// i * nCount 可能很大，超过int的范围
+				// 因此用double进行计算
+				pos = i;
+				pos = pos * (nCount - 1) / nPointNumber;
+				ipos0 = pos;
+				ipos1 = ipos0 + 1;
+				v0 = data[pBegin + ipos0];
+				v1 = data[pBegin + ipos1];
+				// 插值
+				t = pos - ipos0;
+				v = v0 + (v1 - v0) * t;
+				x_arr[i + 1] = v;
+			}
+			x_arr[i + 1] = data[pBegin + nCount - 1]; // 插入最后一个点
+
+			//			if (x_arr.length != (nPointNumber+1))
+			//				return -1;
+
+			// 计算平均值average，并且令x[i] -= average以消除直流分量
+			var sum = 0;
+			i = 1;
+			for (i = 1; i < x_arr.length; i++) {
+				sum += x_arr[i];
+			}var average = sum / nPointNumber;
+			i = 1;
+			for (; i < x_arr.length; i++) {
+				x_arr[i] -= average;
+			}y_arr.length = nPointNumber + 1;
+			this._o_fft(1, mi, x_arr, y_arr, nPointNumber);
+
+			// 处理计算结果
+			var fMaxFZ = 0;
+			var number = nPointNumber / 2;
+			var OutX = this.OutX = [];
+			var OutY = this.OutY = [];
+			var OutPhase = this.OutPhase = {};
+			OutX.length = number;
+			OutY.length = number;
+			OutPhase.length = number;
+			var xi, yi;
+			i = 0;
+			for (; i < number; i++) {
+				xi = x_arr[i + 1];
+				yi = y_arr[i + 1];
+				// 频率
+				OutX[i] = Number((i * fDF).toFixed(2));
+				// 幅值
+				OutY[i] = Number((Math.sqrt(xi * xi + yi * yi) * 4 / nPointNumber).toFixed(2));
+				//				OutY[i]=Math.sqrt(xi * xi + yi * yi)*2 / nPointNumber;//修改
+				// 相位 (弧度)
+				OutPhase[i] = Math.atan2(yi, xi);
+				// 最大幅值
+				fMaxFZ = Math.max(OutY[i], fMaxFZ);
+			}
+
+			if (fMaxFZ < Number.NEGATIVE_INFINITY || fMaxFZ > Number.POSITIVE_INFINITY) return -1;
+
+			return fMaxFZ;
+		}
+
+		/**
+   * @method  fft
+   * @description  Fast Fourier transform -- this calculates an in-place
+   *               complex-to-complex fft. x_arr and y_arr are the real and
+   *               imaginary number arrays of 2^m points.
+   *               <blockquote><pre>
+   *               Formula: forward
+   *                           N-1
+   *                           ---
+   *                       1   \          - j k 2 pi n / N
+   *               X(n) = ---   >   x(k) e                    = forward transform
+   *                       N   /                                n=0..N-1
+   *                           ---
+   *                           k=0
+   *
+   *               Formula: reverse
+   *                           N-1
+   *                           ---
+   *                           \          j k 2 pi n / N
+   *               X(n) =       >   x(k) e                    = reverse transform
+   *                           /                                n=0..N-1
+   *                           ---
+   *                           k=0
+   *
+   * @usage  <pre>Fourier.fft(dir, m, x_arr, y_arr);</pre>
+   * @param   dir   (Number)  -- 1 gives forward transform, -1 gives reverse transform.
+   * @param   m   (Number)  -- a positive integer.
+   * @param   x_arr   (Array)  -- an array containing x-axis values for real number input.
+   * @param   y_arr   (Array)  -- an array containing y-axis values for imaginary number input.
+   * @param	n		-- 分析线数，即使用 x_arr 的长度，此长度必须与 m 相匹配，否则将会计算错误，如果 n = 0，则自动计算
+   * @return  (Boolean)
+   **/
+
+	}, {
+		key: "_fft",
+		value: function _fft(dir, m, x_arr, y_arr) {
+			var n = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+
+			var j = void 0,
+			    k = void 0,
+			    z = void 0;
+			var i1, i2, l1, l2, c1, c2;
+			var tx, ty, t1, t2, u1, u2;
+
+			// Calculate the number of points
+			if (n == 0) {
+				n = 1;
+				for (i = 0; i < m; i++) {
+					n *= 2;
+				}
+			}
+
+			y_arr.length = n;
+			for (var _i3 = 0; _i3 < n; _i3++) {
+				y_arr[_i3] = 0;
+			} // Do the bit reversal
+			i2 = n >> 1;
+			j = 0;
+			for (var _i4 = 0; _i4 < n - 1; _i4++) {
+				if (_i4 < j) {
+					tx = x_arr[_i4];
+					ty = y_arr[_i4];
+					x_arr[_i4] = x_arr[j];
+					y_arr[_i4] = y_arr[j];
+					x_arr[j] = tx;
+					y_arr[j] = ty;
+				}
+				k = i2;
+				while (k <= j) {
+					j -= k;
+					k >>= 1;
+				}
+				j += k;
+			}
+			//trace("m:"+m+", n:"+n+", j:"+j+", k:"+k);
+
+			// Compute the fft
+			c1 = -1.0;
+			c2 = 0.0;
+			l2 = 1;
+			for (var l = 0; l < m; l++) {
+				l1 = l2;
+				l2 <<= 1;
+				u1 = 1.0;
+				u2 = 0.0;
+				for (var _j = 0; _j < l1; _j++) {
+					for (i = _j; i < n; i += l2) {
+						i1 = i + l1;
+						t1 = u1 * x_arr[i1] - u2 * y_arr[i1];
+						t2 = u1 * y_arr[i1] + u2 * x_arr[i1];
+						x_arr[i1] = x_arr[i] - t1;
+						y_arr[i1] = y_arr[i] - t2;
+						x_arr[i] += t1;
+						y_arr[i] += t2;
+					}
+					z = u1 * c1 - u2 * c2;
+					u2 = u1 * c2 + u2 * c1;
+					u1 = z;
+				}
+				c2 = Math.sqrt((1.0 - c1) / 2.0);
+				if (dir == 1) c2 = -c2;
+				c1 = Math.sqrt((1.0 + c1) / 2.0);
+			}
+
+			//trace('c1:'+c1+', c2:'+c2+', z:'+z);
+
+			// Scaling for forward transform
+			if (dir == 1) {
+				for (var _i5 = 0; _i5 < n; _i5++) {
+					x_arr[_i5] /= n;
+					y_arr[_i5] /= n;
+				}
+				//trace('n:'+n+' ..x:['+x+'], y:['+y+']');
+			}
+
+			return true;
+		}
+	}, {
+		key: "fftTest",
+		value: function fftTest(i_dianshu_mi, x, y, i_dianshu) {
+			this._o_fft(1, i_dianshu_mi, x, y, i_dianshu);
+		}
+
+		/**
+   * 计算指定 x 点序列的FFT
+   * i_dianshu：波形的长度；
+   * i_dianshu_mi：i_dianshu是2的多少次幂？如果i_dianshu=1024，则i_dianshu_mi=10；
+   *
+   * x[]：时域波形存放区，x[0]=0；x[1]到x[i_dianshu]中存放时域波形；
+   * y[]：从y[0]到y[i_dianshu]初始化为0；
+   *
+   * fft完成之后：x[1]到x[i_dianshu/2]中存放存放频谱的X坐标值；y[1]到y[i_dianshu/2]中存放频谱的Y坐标值；
+   *
+   * 每一点的辐值：sqrt(x[i] * x[i] + y[i] * y[*]) * 4 / i_dianshu;
+   * 每一点的相位：atan2(x[i],y[i]);
+   *
+   * @return 函数返回 y, y[1]到y[i_dianshu/2]中存放频谱的Y坐标值；
+   **/
+
+	}, {
+		key: "_o_fft",
+		value: function _o_fft(dir, i_dianshu_mi, x, y) {
+			var i_dianshu = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+
+			var i, j, k, l, m, l1;
+			var t1, t2, u1, u2, w1, w2, p2, z;
+
+			// Calculate the number of points
+			if (i_dianshu == 0) {
+				i_dianshu = 1;
+				for (i = 0; i < i_dianshu_mi; i++) {
+					i_dianshu *= 2;
+				}
+			}
+
+			y.length = i_dianshu + 1;
+			for (i = 0; i <= i_dianshu; i++) {
+				y[i] = 0;
+			}j = 1;
+			l = 1;
+			for (; l <= i_dianshu - 1; l++) {
+				if (l < j) {
+					t1 = x[j];
+					t2 = y[j];
+					x[j] = x[l];
+					y[j] = y[l];
+					x[l] = t1;
+					y[l] = t2;
+				}
+				k = i_dianshu >> 1;
+				while (k < j) {
+					j -= k;
+					k = k >> 1;
+				}
+				j = j + k;
+			}
+			m = 1;
+			i = 1;
+			for (; i <= i_dianshu_mi; i++) {
+				u1 = 1;
+				u2 = 0;
+				k = m;
+				m = m << 1;
+				p2 = 3.1415926 / k;
+				w1 = Math.cos(p2);
+				w2 = -Math.sin(p2);
+				w2 = -w2;
+				j = 1;
+				for (; j <= k; j++) {
+					l = j;
+					for (; l <= i_dianshu; l += m) {
+						l1 = l + k;
+						t1 = x[l1] * u1 - y[l1] * u2;
+						t2 = x[l1] * u2 + y[l1] * u1;
+						x[l1] = x[l] - t1;
+						y[l1] = y[l] - t2;
+						x[l] += t1;
+						y[l] += t2;
+					}
+					z = u1 * w1 - u2 * w2;
+					u2 = u1 * w2 + u2 * w1;
+					u1 = z;
+				}
+			}
+		}
+
+		/**
+   *
+   * @param real real[len] 输入实部的数组
+   * @param image image[len] 输入虚部的数组
+   * @param m len = 1<<m  幂
+   * @return  xout[len] 输出实部的数组
+   *
+   */
+
+	}, {
+		key: "ifft",
+		value: function ifft(real, image, m) {
+			var k, le, windex, i, j;
+			var tempWindex = 0,
+			    n = 1;
+
+			var xi_x, xi_y, xip_x, xip_y, temp_x, temp_y, u_x, u_y, tm_x, tm_y;
+			var arg, w_real, w_imag, wrecur_real, wrecur_imag, wtemp_real;
+			n = 1 << m;
+			le = n * 0.5;
+
+			var wptr0 = new Array(le - 1),
+			    wptr1 = new Array(le - 1),
+			    xout = new Array(n),
+			    x1 = new Array(n);
+
+			for (var _i6 = 0; _i6 < n; _i6++) {
+				x1[_i6] = 0;
+			}
+
+			for (var _i7 = 0; _i7 < n; _i7++) {
+				xout[_i7] = real[_i7];
+				x1[_i7] = image[_i7];
+			}
+
+			arg = 4.0 * Math.atan(1.0) / le;
+			wrecur_real = w_real = Math.cos(arg);
+			wrecur_imag = w_imag = Math.sin(arg);
+
+			for (var _j2 = 0; _j2 < le - 1; _j2++) {
+				wptr0[_j2] = wrecur_real;
+				wptr1[_j2] = wrecur_imag;
+				wtemp_real = wrecur_real * w_real - wrecur_imag * w_imag;
+				wrecur_imag = wrecur_real * w_imag + wrecur_imag * w_real;
+				wrecur_real = wtemp_real;
+			}
+
+			le = n;
+			windex = 1;
+			for (var kk = 0; kk < m; kk++) {
+				le = le * 0.5;
+				for (var _i8 = 0; _i8 < n; _i8 = _i8 + 2 * le) {
+					xi_x = xout[_i8];
+					xi_y = x1[_i8];
+					xip_x = xout[_i8 + le];
+					xip_y = x1[_i8 + le];
+
+					temp_x = xi_x + xip_x;
+					temp_y = xi_y + xip_y;
+					xip_x = xi_x - xip_x;
+					xip_y = xi_y - xip_y;
+
+					xout[_i8 + le] = xip_x;
+					x1[_i8 + le] = xip_y;
+					xout[_i8] = temp_x;
+					x1[_i8] = temp_y;
+				}
+
+				tempWindex = windex - 1;
+				for (var _j3 = 1; _j3 < le; _j3++) {
+
+					u_x = wptr0[tempWindex];
+					u_y = wptr1[tempWindex];
+
+					for (var _i9 = _j3; _i9 < n; _i9 = _i9 + 2 * le) {
+						xi_x = xout[_i9];
+						xi_y = x1[_i9];
+						xip_x = xout[_i9 + le];
+						xip_y = x1[_i9 + le];
+
+						temp_x = xi_x + xip_x;
+						temp_y = xi_y + xip_y;
+						tm_x = xi_x - xip_x;
+						tm_y = xi_y - xip_y;
+						xip_x = tm_x * u_x - tm_y * u_y;
+						xip_y = tm_x * u_y + tm_y * u_x;
+
+						xout[_i9 + le] = xip_x;
+						x1[_i9 + le] = xip_y;
+						xout[_i9] = temp_x;
+						x1[_i9] = temp_y;
+					}
+					tempWindex = tempWindex + windex;
+				}
+
+				windex = 2 * windex;
+			}
+
+			j = 0;
+			for (var _i10 = 1; _i10 < n - 1; _i10++) {
+				k = n / 2;
+				while (k <= j) {
+					j = j - k;
+					k = k * 0.5;
+				}
+				j = j + k;
+				if (_i10 < j) {
+					xi_x = xout[_i10];
+					xi_y = x1[_i10];
+					temp_x = xout[j];
+					temp_y = x1[j];
+
+					xout[j] = xi_x;
+					x1[j] = xi_y;
+					xout[_i10] = temp_x;
+					x1[_i10] = temp_y;
+				}
+			}
+
+			return xout;
+		}
+
+		/**
+   * ifft
+   * @param xin
+   * @param m
+   * @return
+   *
+   */
+
+	}, {
+		key: "ifft2",
+		value: function ifft2(xin, m) {
+			var scale;
+
+			var n = 1;
+			var k, l, le, windex;
+			var tempWindex = 0;
+			var i, j;
+
+			var wptr;
+			var xi, xip, temp, u, tm;
+			xi = new Array2(1, 2);
+			xip = new Array2(1, 2);
+			temp = new Array2(1, 2);
+			u = new Array2(1, 2);
+			tm = new Array2(1, 2);
+
+			var arg, w_real, w_imag, wrecur_real, wrecur_imag, wtemp_real;
+
+			n = 1 << m;
+			le = n / 2;
+
+			var x = new Array2(n, 2);
+			for (var _i11 = 0; _i11 < n; _i11++) {
+				x.set(_i11, 0, xin.get(_i11, 0));
+				x.set(_i11, 1, xin.get(_i11, 1));
+			}
+
+			wptr = new Array2(le - 1, 2);
+			arg = 4.0 * Math.atan(1.0) / le;
+			wrecur_real = w_real = Math.cos(arg);
+			wrecur_imag = w_imag = Math.sin(arg);
+
+			for (var _j4 = 0; _j4 < le - 1; _j4++) {
+				wptr.set(_j4, 0, wrecur_real);
+				wptr.set(_j4, 1, wrecur_imag);
+				wtemp_real = wrecur_real * w_real - wrecur_imag * w_imag;
+				wrecur_imag = wrecur_real * w_imag + wrecur_imag * w_real;
+				wrecur_real = wtemp_real;
+			}
+
+			le = n;
+			windex = 1;
+			for (var kk = 0; kk < m; kk++) {
+				le = le * 0.5;
+				for (var _i12 = 0; _i12 < n; _i12 = _i12 + 2 * le) {
+					xi.set(0, 0, x.get(_i12, 0));
+					xi.set(0, 1, x.get(_i12, 1));
+					xip.set(0, 0, x.get(_i12 + le, 0));
+					xip.set(0, 1, x.get(_i12 + le, 1));
+
+					temp.set(0, 0, xi.get(0, 0) + xip.get(0, 0));
+					temp.set(0, 1, xi.get(0, 1) + xip.get(0, 1));
+					xip.set(0, 0, xi.get(0, 0) - xip.get(0, 0));
+					xip.set(0, 1, xi.get(0, 1) - xip.get(0, 1));
+
+					x.set(_i12 + le, 0, xip.get(0, 0));
+					x.set(_i12 + le, 1, xip.get(0, 1));
+					x.set(_i12, 0, temp.get(0, 0));
+					x.set(_i12, 1, temp.get(0, 1));
+				}
+
+				tempWindex = windex - 1;
+				for (var _j5 = 1; _j5 < le; _j5++) {
+					u.set(0, 0, wptr.get(tempWindex, 0));
+					u.set(0, 1, wptr.get(tempWindex, 1));
+
+					for (var _i13 = _j5; _i13 < n; _i13 = _i13 + 2 * le) {
+						xi.set(0, 0, x.get(_i13, 0));
+						xi.set(0, 1, x.get(_i13, 1));
+						xip.set(0, 0, x.get(_i13 + le, 0));
+						xip.set(0, 1, x.get(_i13 + le, 1));
+
+						temp.set(0, 0, xi.get(0, 0) + xip.get(0, 0));
+						temp.set(0, 1, xi.get(0, 1) + xip.get(0, 1));
+						tm.set(0, 0, xi.get(0, 0) - xip.get(0, 0));
+						tm.set(0, 1, xi.get(0, 1) - xip.get(0, 1));
+						xip.set(0, 0, tm.get(0, 0) * u.get(0, 0) - tm.get(0, 1) * u.get(0, 1));
+						xip.set(0, 1, tm.get(0, 0) * u.get(0, 1) + tm.get(0, 1) * u.get(0, 0));
+
+						xi.set(_i13 + le, 0, xip.get(0, 0));
+						xi.set(_i13 + le, 1, xip.get(0, 1));
+
+						xi.set(_i13, 0, temp.get(0, 0));
+						xi.set(_i13, 1, temp.get(0, 1));
+					}
+
+					tempWindex = tempWindex + windex;
+				}
+
+				windex = 2 * windex;
+			}
+
+			j = 0;
+			for (var _i14 = 1; _i14 < n - 1; _i14++) {
+				k = n * 0.5;
+				while (k <= j) {
+					j = j - k;
+					k = k * 0.5;
+				}
+				j = j + k;
+				if (_i14 < j) {
+					xi.set(0, 0, x.get(_i14, 0));
+					xi.set(0, 1, x.get(_i14, 1));
+					temp.set(0, 0, x.get(j, 0));
+					temp.set(0, 1, x.get(j, 1));
+
+					x.set(j, 0, xi.get(0, 0));
+					x.set(j, 1, xi.get(0, 1));
+					x.set(_i14, 0, temp.get(0, 0));
+					x.set(_i14, 1, temp.get(0, 1));
+				}
+			}
+			return x;
+		}
+	}]);
+
+	return FFT;
+}();
+
+exports.default = FFT;
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function baseWaveTool() {}
+
+baseWaveTool.prototype.readUnsignedShort = function (b1, b2) {
+  var num = (b1 & 0xff) << 8 | b2 & 0xff;
+  if (num > 32767) {
+    return num - 65536;
+  }
+  return num;
+};
+
+//规定数组前两位是系数
+baseWaveTool.prototype.readByteArray = function (oldArray) {
+
+  var newArray = new Array(),
+      size = oldArray.length;
+  //解析系数
+  var coefficient = this.readUnsignedShort(oldArray[0], oldArray[1]);
+  //采样频率
+  var sampleFrequency = this.readUnsignedShort(oldArray[2], oldArray[3]);
+
+  for (var i = 4; i < size; i = i + 2) {
+
+    newArray.push(this.readUnsignedShort(oldArray[i], oldArray[i + 1]) / coefficient);
+  }
+
+  return { waveData: newArray, sampleFrequency: sampleFrequency };
+};
+
+function baseWaveRequest(reqInterface) {
+  this.url = reqInterface;
+  //this.url = $service_config.url + reqInterface;
+  //this.success = success;
+  //this.error = error;
+}
+
+baseWaveRequest.prototype.readCode = function (w) {
+  return (w[0] & 0xff) << 24 | (w[1] & 0xff) << 16 | (w[2] & 0xff) << 8 | w[3] & 0xff;
+};
+
+baseWaveRequest.prototype.readLong = function (w) {
+  var c1 = w[0] & 255,
+      c2 = w[1] & 255;
+  if (c1 === 255) {
+    if (c2 === 248) return Number.NaN;
+    if (c2 === 240) return Number.NEGATIVE_INFINITY;
+  } else if (c1 === 127 && c2 === 240) return Number.POSITIVE_INFINITY;
+  var c3 = w[2] & 255,
+      c4 = w[3] & 255,
+      c5 = w[4] & 255,
+      c6 = w[5] & 255,
+      c7 = w[6] & 255,
+      c8 = w[7] & 255;
+  if (!c1 && !c2 && !c3 && !c4) return 0;
+  for (var d = (c1 << 4 & 2047 | c2 >> 4) - 1023, c2 = ((c2 & 15) << 16 | c3 << 8 | c4).toString(2), c3 = c2.length; c3 < 20; c3++) {
+    c2 = "0" + c2;
+  }c6 = ((c5 & 127) << 24 | c6 << 16 | c7 << 8 | c8).toString(2);
+  for (c3 = c6.length; c3 < 31; c3++) {
+    c6 = "0" + c6;
+  }c5 = parseInt(c2 + (c5 >> 7 ? "1" : "0") + c6, 2);
+  if (c5 == 0 && d == -1023) return 0;
+  return c5;
+};
+
+baseWaveRequest.prototype.send = function (data, success, error) {
+  var xmlhttp;
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  xmlhttp.open("POST", this.url, true);
+  xmlhttp.responseType = 'arraybuffer';
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //这行代码很关键，用来把字符串类型的参数序列化成Form Data
+  xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+  var params = 'isWaveRequest=true';
+  if (data) {
+    for (var key in data) {
+      params = params + '&' + key + '=' + data[key];
+    }
+  }
+
+  xmlhttp.send(params);
+  var me = this;
+
+  xmlhttp.onload = function (e) {
+
+    if (this.status == 200) {
+      var int8Array = new Int8Array(this.response);
+      if (success) {
+        //解析code
+        var code = me.readCode(int8Array);
+        if (code != 200) {
+          success({ code: code });
+          return false;
+        }
+
+        var time = new Date(me.readLong(int8Array.subarray(4, 12)));
+        var result = { code: code, time: time, data: int8Array.subarray(12, int8Array.byteLength) };
+        success(result);
+      }
+    } else {
+      if (error) {
+        error(this.response);
+      } else {
+        // alert('获取数据失败!');
+      }
+    }
+  };
+};
+
+exports.baseWaveTool = baseWaveTool;
+exports.baseWaveRequest = baseWaveRequest;
 
 /***/ })
 /******/ ]);
