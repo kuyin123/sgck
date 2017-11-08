@@ -66,7 +66,13 @@ export default class FFT {
 		if(!isFinite(data[0])){
 			return -1;
 		}
-		var nPointNumber = data.length;
+		var nPointNumber, times;
+        nPointNumber = data.length;
+        times = nPointNumber / 512;
+        if (times % 1 != 0) {
+           nPointNumber = 512 * parseInt(times);
+           data = data.slice(-nPointNumber);
+        }
 		var mi = Math.log(nPointNumber) / Math.LN2;
 		if(nPointNumber != Math.pow(2, mi)) {
 			return -1;
