@@ -449,21 +449,6 @@ exports.dataSession = _dataSession2.default;
 exports.fft = _fft2.default;
 exports.baseWaveTool = _waveHandle.baseWaveTool;
 exports.baseWaveRequest = _waveHandle.baseWaveRequest;
-/**
-export default {
-  common: common,
-  dateHandler: dateHandler,
-  eventTarget: eventTarget,
-  Inheritance: Inheritance,
-  md5: md5,
-  commonReg: commonReg,
-  dataLocal: dataLocal,
-  dataSession: dataSession,
-  fft,
-  baseWaveTool,
-  baseWaveRequest
-}
-*/
 
 /***/ }),
 /* 5 */
@@ -1415,7 +1400,13 @@ var FFT = function () {
 			if (!isFinite(data[0])) {
 				return -1;
 			}
-			var nPointNumber = data.length;
+			var nPointNumber, times;
+			nPointNumber = data.length;
+			times = nPointNumber / 512;
+			if (times % 1 != 0) {
+				nPointNumber = 512 * parseInt(times);
+				data = data.slice(-nPointNumber);
+			}
 			var mi = Math.log(nPointNumber) / Math.LN2;
 			if (nPointNumber != Math.pow(2, mi)) {
 				return -1;
