@@ -1,21 +1,23 @@
 /*
-* sg-utils-dateHandler 2017-06
-* date handler utils
-* */
+ * sg-utils-dateHandler 2017-06
+ * date handler utils
+ * */
 
 /* export 的顶层对象 */
 var dateHandler = {
-  prevDay:prevDay,
-  prevWeek:prevWeek,
-  prevMonth:prevMonth,
-  prevYear:prevYear,
-  dateFormat:dateFormat
+  prevDay: prevDay,
+  prevWeek: prevWeek,
+  prevMonth: prevMonth,
+  prevYear: prevYear,
+  dateFormat: dateFormat,
+  dateFormatByCurrentTime:dateFormatByCurrentTime,
+  formatTime:formatTime
 };
 
 /*
-* Date 的处理方法和格式化
-* 传入要格式化的时间数据, 返回相应格式的时间值.
-* */
+ * Date 的处理方法和格式化
+ * 传入要格式化的时间数据, 返回相应格式的时间值.
+ * */
 // 1. 前一天
 function prevDay(src) {
   return new Date(src.getTime() - 24 * 60 * 60 * 1000);
@@ -66,6 +68,72 @@ function dateFormat(date, fmt) {
   }
   return fmt;
 };
+
+// 6.日期根据传入时间戳与当前时间戳对比，显示刚刚，几分钟前，几小时前，昨天，年月日等
+function dateFormatByCurrentTime(time) {
+  /*
+   *@time:Date
+   */
+  let result: string
+
+  const format = (value) => {
+    return value >= 10 ? value : '0' + value
+  }
+
+  //获取传参时间
+  let date = new Date(time)
+  let year = date.getFullYear()
+  let month = date.getMonth() + 1
+  let day = date.getDate()
+  let hours = date.getHours()
+  let minutes = date.getMinutes()
+  let second = date.getSeconds()
+
+  //获取当前时间
+  let today = new Date()
+  let tyear = today.getFullYear()
+  let tmonth = today.getMonth() + 1
+  let tday = today.getDate()
+  let thours = today.getHours()
+  let tminutes = today.getMinutes()
+  let tsecond = today.getSeconds()
+
+  let currentTime = new Date().getTime()
+  let intervalTime = currentTime - time
+  if (year == tyear) { //同一年
+    if (month == tmonth) { //同一月
+      if (day == tday) { //同一天
+        if (hours == thours && minutes == tminutes) {
+          result = '刚刚'
+        } else {
+          if (hours == thours) {
+            result = tminutes - minutes <= 0 ? '刚刚' : `${tminutes - minutes}分钟前`
+          } else {
+            result = `${thours - hours}小时前`
+          }
+        }
+      } else if (tday - day == 1) {
+        result = `昨天`
+
+      } else {
+        result = `${year}/${format(month)}/${format(day)}`
+      }
+    } else { //不同月
+      result = `${year}/${format(month)}/${format(day)}`
+    }
+  } else { //不同年
+    result = `${year}/${format(month)}/${format(day)}`
+  }
+  return result;
+}
+
+//7.根据传入的时间长度，格式化为00:00:00
+function formatTime(value: number) {
+  let s = Math.trunc(value % 60);
+  let m = Math.trunc((value / 60) % 60);
+  let h = Math.trunc(((value / 60) / 60) % 60);
+  return h > 0 ? `${h<10?'0'+h:h}:${m<10?'0'+m:m}:${s<10?'0'+s:s}` : `${m<10?'0'+m:m}:${s<10?'0'+s:s}`;
+}
 
 /* 暴露顶层对象 */
 export default dateHandler
