@@ -74,7 +74,7 @@ function dateFormatByCurrentTime(time) {
   /*
    *@time:Date
    */
-  let result: string
+  let result = ''
 
   const format = (value) => {
     return value >= 10 ? value : '0' + value
@@ -114,7 +114,6 @@ function dateFormatByCurrentTime(time) {
         }
       } else if (tday - day == 1) {
         result = `昨天`
-
       } else {
         result = `${year}/${format(month)}/${format(day)}`
       }

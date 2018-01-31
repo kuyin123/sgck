@@ -610,7 +610,7 @@ exports.default = {
 /* 8 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: SyntaxError: D:/sgck/src/dateHandler/dateHandler.js: Unexpected token, expected ; (77:12)\n\n  75 |    *@time:Date\n  76 |    */\n> 77 |   let result: string\n     |             ^\n  78 | \n  79 |   const format = (value) => {\n  80 |     return value >= 10 ? value : '0' + value\n");
+throw new Error("Module build failed: SyntaxError: D:/sgck/src/dateHandler/dateHandler.js: Unexpected token, expected , (130:25)\n\n  128 | \n  129 | //7.根据传入的时间长度，格式化为00:00:00\n> 130 | function formatTime(value: number) {\n      |                          ^\n  131 |   let s = Math.trunc(value % 60);\n  132 |   let m = Math.trunc((value / 60) % 60);\n  133 |   let h = Math.trunc(((value / 60) / 60) % 60);\n");
 
 /***/ }),
 /* 9 */
