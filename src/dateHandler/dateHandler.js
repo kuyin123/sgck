@@ -127,7 +127,7 @@ function dateFormatByCurrentTime(time) {
 }
 
 //7.根据传入的时间长度，格式化为00:00:00
-function formatTime(value: number) {
+function formatTime(value) {
   let s = Math.trunc(value % 60);
   let m = Math.trunc((value / 60) % 60);
   let h = Math.trunc(((value / 60) / 60) % 60);
