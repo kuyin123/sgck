@@ -1,30 +1,30 @@
 function baseWaveTool() {
 }
 
-baseWaveTool.prototype.readUnsignedShort= function(b1,b2){
-  var num = ((b1 & 0xff) << 8 | (b2 & 0xff)) ;
-  if(num > 32767){
-    return num -65536;
+baseWaveTool.prototype.readUnsignedShort = function (b1, b2) {
+  var num = ((b1 & 0xff) << 8 | (b2 & 0xff));
+  if (num > 32767) {
+    return num - 65536;
   }
   return num;
 }
 
 //规定数组前两位是系数
-baseWaveTool.prototype.readByteArray = function(oldArray){
-	
-	var newArray = new Array,size = oldArray.length;
-	//解析系数
-	var coefficient = this.readUnsignedShort(oldArray[0],oldArray[1]);
-	//采样频率
-	var sampleFrequency = this.readUnsignedShort(oldArray[2],oldArray[3]);
-	
-	for(var i=4;i<size;i=i+2){
-		 
-	   newArray.push(this.readUnsignedShort(oldArray[i],oldArray[i+1])/coefficient);
-	}
-	
-	return {waveData:newArray,sampleFrequency:sampleFrequency};
-	
+baseWaveTool.prototype.readByteArray = function (oldArray) {
+
+  var newArray = new Array, size = oldArray.length;
+  //解析系数
+  var coefficient = this.readUnsignedShort(oldArray[0], oldArray[1]);
+  //采样频率
+  var sampleFrequency = this.readUnsignedShort(oldArray[2], oldArray[3]);
+
+  for (var i = 4; i < size; i = i + 2) {
+
+    newArray.push(this.readUnsignedShort(oldArray[i], oldArray[i + 1]) / coefficient);
+  }
+
+  return {waveData: newArray, sampleFrequency: sampleFrequency};
+
 }
 
 function baseWaveRequest(reqInterface) {
@@ -35,6 +35,10 @@ function baseWaveRequest(reqInterface) {
 }
 
 baseWaveRequest.prototype.readCode = function (w) {
+  return (w[0] & 0xff) << 24 | (w[1] & 0xff) << 16 | (w[2] & 0xff) << 8 | (w[3] & 0xff);
+};
+
+baseWaveRequest.prototype.readType = function (w) {
   return (w[0] & 0xff) << 24 | (w[1] & 0xff) << 16 | (w[2] & 0xff) << 8 | (w[3] & 0xff);
 };
 
@@ -91,7 +95,8 @@ baseWaveRequest.prototype.send = function (data, success, error) {
         }
 
         let time = new Date(me.readLong(int8Array.subarray(4, 12)));
-        let result = {code: code, time: time, data: int8Array.subarray(12, int8Array.byteLength)};
+        let dataType = me.readType(int8Array.subarray(12, 16));
+        let result = {code: code, time: time, dataType: dataType, data: int8Array.subarray(16, int8Array.byteLength)};
         success(result);
 
       }
@@ -99,7 +104,7 @@ baseWaveRequest.prototype.send = function (data, success, error) {
       if (error) {
         error(this.response);
       } else {
-       // alert('获取数据失败!');
+        // alert('获取数据失败!');
       }
     }
 
